@@ -1,0 +1,36 @@
+body{
+text-align: center;
+}
+
+#id-container .color-button{
+    height: 200px;
+    width: 200px;
+    border-radius: 20%;
+    border: 5px solid black;
+    margin: 20px;
+}
+
+#id-container{
+    display: flex;
+    justify-content: center;
+}
+
+.yellow{
+    background-color: #f99b45;
+}
+
+.red{
+    background-color: #d95980;
+}
+
+.purple{
+    background-color: #8a2be2;
+}
+
+.green{
+    background-color: #63aac0;
+}
+
+.flash{
+    background-color: white;
+}
