@@ -5,18 +5,24 @@ let btns = ["yellow", "red", "purple", "green"];
 
 let started = false;
 let level = 0;
+let score = 0;
 
 let h2 = document.querySelector("h2");
+let scoreDisplay = document.querySelector("h3");
 
 
-// START GAME
+// ================= START GAME =================
+
 document.addEventListener("keydown", function () {
 
-    if (started === false) {
+    if (started == false) {
 
-        console.log("game is started");
+        console.log("Game is started");
 
         started = true;
+
+        score = 0;
+        scoreDisplay.innerText = `Score: ${score}`;
 
         levelup();
     }
@@ -24,7 +30,8 @@ document.addEventListener("keydown", function () {
 });
 
 
-// GAME FLASH
+// ================= GAME FLASH =================
+
 function Flash(btn) {
 
     btn.classList.add("flash");
@@ -38,7 +45,8 @@ function Flash(btn) {
 }
 
 
-// USER FLASH
+// ================= USER FLASH =================
+
 function userFlash(btn) {
 
     btn.classList.add("userflash");
@@ -52,7 +60,8 @@ function userFlash(btn) {
 }
 
 
-// LEVEL UP
+// ================= LEVEL UP =================
+
 function levelup() {
 
     userSeq = [];
@@ -62,34 +71,67 @@ function levelup() {
     h2.innerText = `Level ${level}`;
 
 
-    // RANDOM BUTTON
+    // Choose random button
+
     let randIdx = Math.floor(Math.random() * 4);
 
-    let randcolor = btns[randIdx];
+    let randColor = btns[randIdx];
 
-    let randBtn = document.querySelector(`.${randcolor}`);
-
-
-    // ADD COLOR TO GAME SEQUENCE
-    gameSeq.push(randcolor);
-
-    console.log(gameSeq);
+    let randBtn = document.querySelector(`.${randColor}`);
 
 
-    // FLASH RANDOM BUTTON
-    Flash(randBtn);
+    // Add random color to game sequence
+
+    gameSeq.push(randColor);
+
+    console.log("Game Sequence:", gameSeq);
+
+
+    // Flash the complete sequence
+
+    let i = 0;
+
+    let interval = setInterval(function () {
+
+        let color = gameSeq[i];
+
+        let btn = document.querySelector(`.${color}`);
+
+        Flash(btn);
+
+        i++;
+
+
+        if (i >= gameSeq.length) {
+
+            clearInterval(interval);
+
+        }
+
+    }, 600);
 
 }
 
 
-// CHECK ANSWER
+// ================= CHECK ANSWER =================
+
 function checkAns(idx) {
 
-    // CORRECT ANSWER
+    // Correct answer
+
     if (userSeq[idx] === gameSeq[idx]) {
 
-        // COMPLETE SEQUENCE
+        console.log("Correct!");
+
+
+        // Complete sequence
+
         if (userSeq.length === gameSeq.length) {
+
+            score++;
+
+            scoreDisplay.innerText = `Score: ${score}`;
+
 
             setTimeout(function () {
 
@@ -101,10 +143,14 @@ function checkAns(idx) {
 
     }
 
-    // WRONG ANSWER
+
+    // Wrong answer
+
     else {
 
         h2.innerText = "Game Over! Press any key to start";
+
+        console.log("Game Over!");
 
         reset();
 
@@ -113,12 +159,16 @@ function checkAns(idx) {
 }
 
 
-// BUTTON PRESS
+// ================= BUTTON PRESS =================
+
 function btnPress() {
 
-    // GAME START HONE SE PEHLE BUTTON CLICK NAHI HOGA
+    // Don't allow clicking before game starts
+
     if (started === false) {
+
         return;
+
     }
 
 
@@ -129,6 +179,9 @@ function btnPress() {
 
     let userColor = btn.getAttribute("id");
 
+    console.log("User clicked:", userColor);
+
+
     userSeq.push(userColor);
 
 
@@ -137,7 +190,8 @@ function btnPress() {
 }
 
 
-// ALL BUTTONS
+// ================= ALL BUTTONS =================
+
 let allBtns = document.querySelectorAll(".btn");
 
 
@@ -148,7 +202,8 @@ for (let btn of allBtns) {
 }
 
 
-// RESET
+// ================= RESET =================
+
 function reset() {
 
     started = false;

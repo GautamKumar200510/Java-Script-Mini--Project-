@@ -17,25 +17,34 @@ body {
 .btn {
     height: 200px;
     width: 200px;
-    border-radius: 20%;
-    border: 5px solid black;
-    margin: 20px;
-}
 
-.yellow {
-    background-color: #f99b45;
+    border-radius: 20%;
+
+    border: 5px solid black;
+
+    margin: 20px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .red {
     background-color: #d95980;
 }
 
-.purple {
-    background-color: #8a2be2;
+.yellow {
+    background-color: #f99b45;
 }
 
 .green {
     background-color: #63aac0;
+}
+
+.purple {
+    background-color: #8a2be2;
 }
 
 .flash {
