@@ -1,10 +1,13 @@
-# 🎮 JavaScript Mini Projects
+ 🎮 JavaScript Mini Projects
 
 A collection of mini projects built using **HTML, CSS, and JavaScript** to practice and strengthen JavaScript concepts through practical projects.
 
 ## 🚀 Projects
 
 ### 🎵 Simon Game
+
+<img width="1255" height="887" alt="image" src="https://github.com/user-attachments/assets/29bb5d87-a5f0-46c1-b3eb-d2de2c610f23" />
+
 
 A fun and interactive **Simon Game** built using JavaScript.
 
